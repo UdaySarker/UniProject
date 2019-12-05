@@ -16,7 +16,7 @@
 ?>
 <?php include "inc/header.php"?>
         <div class="row headding-section">
-            <div class="col-10"><h2>Student List</h2></div>
+            <div class="col-10"><h2>Instructor List</h2></div>
             <div class="col-2"><a href="index.php" class="btn btn-primary text-right">Back</a></div>
         </div>
         <div class="row">
@@ -25,9 +25,8 @@
                     <thead>
                       <tr>
                         <th>Name</th>
-                        <th>StudentID</th>
+                        <th>Instructor ID</th>
                         <th>Department</th>
-                        <th>option</th>
                       </tr>
                     </thead>
                     <tbody>

@@ -47,6 +47,15 @@ class Database
         return false;
       }
     }
+    public function selectCourse(){
+      $query="select * from course";
+      $result=$this->link->query($query) or die($this->link->error.__LINE__);
+      if($result->num_rows>0){
+        return $result->fetch_all(MYSQLI_ASSOC);
+      }else{
+        return false;
+      }
+    }
     public function insert($query)
     {
         $result = $this->link->query($query) or die ($this->link->error.__LINE__);
@@ -88,5 +97,10 @@ class Database
             return false;
         }
     }
+      public function takenCourse($id){
+        $sql="select taken_course from student where id=$id";
+        $query=$this->link->query($sql);
+        return $query->fetch_assoc();
+      }
 
 }
