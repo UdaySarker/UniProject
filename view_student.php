@@ -33,12 +33,11 @@
                     <tbody>
                      <?php if($read) {?>
                      <?php while($row = $read->fetch_assoc()) {?>
-                       <?php print_r($row['id']); ?>
                       <tr>
                         <td><?php echo $row['name'];?></td>
                         <td><?php echo $row['student_id']?></td>
                         <td><?php echo $row['dept_name'];?></td>
-                        <td><?php echo $?></td>
+                        <td><?php echo $row['taken_course']?></td>
                         <td>
                             <a href="update.php?id=<?php echo urlencode($row['id']);?>" class="btn btn-info">Update</a>
                             <a  onclick="return confirm('are you sure to delete')" href="?id=<?php echo urlencode($row['id']);?>" class="btn btn-danger">Delete</a>
