@@ -1,10 +1,5 @@
 <?php
-    include "inc/header.php";
-?>
-    <?php
-    include "inc/header.php";
-    include "database/config.php";
-    include "database/database.php";
+    include  __DIR__."\inc\header.php";
 ?>
     <div id="login">
         <h3 class="text-center text-white pt-5">Welcome</h3>
@@ -14,8 +9,8 @@
                     <div id="login-box" class="col-md-12">
                         <div>
                             <h2>Welcome</h2>
-                            <a href="student/" class="btn btn-outline-dark">Student Portal</a>||
-                            <a href="teacher/" class="btn btn-outline-dark">Teacher Portal</a>
+                            <a href="student_login.php" class="btn btn-outline-dark">Student Portal</a>||
+                            <a href="teacher_login.php" class="btn btn-outline-dark">Teacher Portal</a>
                         </div>
                     </div>
                 </div>
@@ -23,7 +18,3 @@
         </div>
     </div>
 <?php include "inc/footer.php"?>
-
-<?
-    include "inc/footer.php";
-?>
