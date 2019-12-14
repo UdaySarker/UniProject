@@ -39,7 +39,8 @@ class Database
             return false;
         }
     }
-    public function selectDept($query){
+    public function selectDept(){
+        $query="select * from department";
       $result=$this->link->query($query) or die($this->link->error.__LINE__);
       if($result->num_rows>0){
         return $result->fetch_all(MYSQLI_ASSOC);
