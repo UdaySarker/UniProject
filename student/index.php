@@ -34,7 +34,7 @@
           <div class="col-md-4">
             <div class="card">
               <div class="card-body">
-                <a href="studentPayment" class="btn btn-primary">Payent Information</a>
+                <a href="studentPayment" class="btn btn-primary">Payment Information</a>
               </div>
             </div>
           </div>
