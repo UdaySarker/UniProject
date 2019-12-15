@@ -1,9 +1,4 @@
 <?php
-include 'config.php';
-include 'database.php';
+require_once(__DIR__.'//./database/DB.php');
 
-$db=new Database();
-
-function getData(){
-    
-}
+$db=new DB();
