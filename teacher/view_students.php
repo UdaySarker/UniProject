@@ -1,7 +1,8 @@
 <?php
   require_once(__DIR__."\..\database\Teacher.php");
+  $tch=new Teacher();
+  $semesters=$tch->getSemester();
   if(isset($_POST['submit'])){
-    $tch=new Teacher();
      $sts=$tch->getStudent($_POST);
   }
  ?>
@@ -34,32 +35,6 @@
             <a class="nav-link" href="#">Sign out</a>
           </li>
         </ul>
-      </nav>
-      <!-- <div class="row">
-        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-          <div class="sidebar-sticky">
-            <ul class="nav flex-column">
-              <li class="nav-item">
-                <a class="nav-link active" href="#">
-                  <span data-feather="home"></span>
-                  Dashboard <span class="sr-only">(current)</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="file"></span>
-                  Orders
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="shopping-cart"></span>
-                  Products
-                </a>
-              </li>
-            </ul>
-
-          </div> -->
         </nav>
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
@@ -67,12 +42,14 @@
           <form class="" action="" method="post">
             <select class="" name="getStudent" class="form-control col-lg-4" style="margin-bottom:5px">
               <option value="">Please Select Semester</option>
-              <option value="1">Fall 2019</option>
-              <option value="2">Spring 2019</option>
+              <?php foreach($semesters as $semester):?>
+              <option value="<?php echo $semester['semester_id']?>"><?php echo $semester['semester_name']?></option>
+              <?php endforeach?>
             </select>
             <input type="submit" name="submit" value="Go">
           </form>
-          <input type="text" name="" value="" placeholder="search" class="form-control col-lg-4">
+          <label for="">Search By</label>
+          <input type="text" name="" value="" onkeyup="searchBox(this.value)"id="searchBox" placeholder="search" class="form-control col-lg-4">
           <div class="table-responsive">
             <table class="table table-striped table-sm">
               <thead>
@@ -91,7 +68,7 @@
                 <tr>
                   <td><?php echo $st['student_id'] ?></td>
                   <td><?php echo $st['name'] ?></td>
-                  <td><?php echo $st['semester'] ?></td>
+                  <td><?php echo $st['semester_name'] ?></td>
                   <td><?php echo $st['mobile'] ?></td>
                   <td><?php echo $st['email'] ?></td>
                   <td><?php echo $st['bloodgroup'] ?></td>
