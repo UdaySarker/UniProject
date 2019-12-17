@@ -1,6 +1,13 @@
 <?php
-    require_once('./database/DB.php');
-    $db=new DB
+    require_once('../database/Teacher.php');
+    require_once('../database/Admin.php');
+    $tch=new Teacher();
+    $sems=$tch->getSemester();
+    if(isset($_POST['addStudent'])){
+        $ad=new Admin();
+        $res=$ad->insertStudent($_POST);
+    }
+  
 ?>
 <!doctype html>
 <html lang="en">
@@ -9,17 +16,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
 
-    <title>Album example for Bootstrap</title>
-
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/album/">
-
+    <title>Add Student</title>
     <!-- Bootstrap core CSS -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="album.css" rel="stylesheet">
   </head>
-
   <body>
     <header>
       <div class="navbar navbar-dark bg-dark box-shadow">
@@ -33,7 +33,10 @@
     <div class="container" style="margin-top:20px">
         <div class="row justify-content-md-center">
             <div class="col-lg-8 col-offset-2">
-            <form>
+            <?php if(isset($res)):?>
+            <h3 class="alert alert-danger w-50"><?=$res??''?></h3>
+            <?php endif ?>
+            <form method="POST" action="">
                 <div class="form-group row">
                     <label for="sid" class="col-sm-2 col-form-label">Student ID</label>
                     <div class="col-sm-4">
@@ -49,8 +52,13 @@
                 <div class="form-group row">
                     <label for="semester" class="col-sm-2 col-form-label">Semester</label>
                     <div class="col-sm-4">
-                        <select class="form-control form-control-sm" name="semester">
-                            <option>Small select</option>
+                        <select class="form-control form-control-sm" name="semid">
+                            <option value="">Select Semester</option>
+                        <?php if(isset($sems)):?>
+                            <?php foreach($sems as $sem):?>
+                            <option value="<?php echo $sem['semester_id']?>"><?php echo $sem['semester_name']?></option>
+                        <?php endforeach?>
+                        <?php endif?>
                         </select>
                     </div>
                 </div>
@@ -81,13 +89,5 @@
             </div>
         </div>
     </div>
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-    <script src="../../assets/js/vendor/popper.min.js"></script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-    <script src="../../assets/js/vendor/holder.min.js"></script>
   </body>
 </html>
