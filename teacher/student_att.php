@@ -74,7 +74,7 @@
                     <?php if(isset($stAtts)):?>
                     <?php foreach($stAtts as $stAtt):?>
                     <tr>
-                      <td><input type="hidden" name="studentAtt[sid]" value="<?php echo $stAtt['student_id']?>"><?php echo $stAtt['student_id']?></td>
+                      <td><input type="" readyonly name="studentAtt[sid]" value="<?php echo $stAtt['student_id']?>"><?php echo $stAtt['student_id']?></td>
                       <td><input type="hidden" name="studentAtt[sname]" value="<?php echo $stAtt['name']?>"><?php echo $stAtt['name']?></td>
                       <td><input type="checkbox" name="studentAtt[sta]"></td>
                     </tr>

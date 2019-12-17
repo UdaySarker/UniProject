@@ -29,16 +29,11 @@
   <body>
     <div class="container-fluid">
       <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
-        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Teacher Portal</a>
-        <ul class="navbar-nav px-3">
-          <li class="nav-item text-nowrap">
-            <a class="nav-link" href="#">Sign out</a>
-          </li>
-        </ul>
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Teacher Portal</a>>
         </nav>
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-          <h2>Section title</h2>
+          <h2>View Students</h2>
           <form class="" action="" method="post">
             <select class="" name="getStudent" class="form-control col-lg-4" style="margin-bottom:5px">
               <option value="">Please Select Semester</option>

@@ -1,11 +1,12 @@
-
+<?php
+    require_once('./database/DB.php');
+    $db=new DB
+?>
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
     <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
 
     <title>Album example for Bootstrap</title>
@@ -36,19 +37,19 @@
                 <div class="form-group row">
                     <label for="sid" class="col-sm-2 col-form-label">Student ID</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control form-control-sm" id="sid">
+                        <input type="text" class="form-control form-control-sm" id="sid" name="sid">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="studentname" class="col-sm-2 col-form-label">Name</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control form-control-sm" id="studentname" placeholder="Enter Name">
+                        <input type="text" class="form-control form-control-sm" id="studentname" name="sname">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="semester" class="col-sm-2 col-form-label">Semester</label>
                     <div class="col-sm-4">
-                        <select class="form-control form-control-sm">
+                        <select class="form-control form-control-sm" name="semester">
                             <option>Small select</option>
                         </select>
                     </div>
@@ -56,19 +57,19 @@
                 <div class="form-group row">
                     <label for="mobile" class="col-sm-2 col-form-label">Mobile</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control form-control-sm" id="mobile">
+                        <input type="text" class="form-control form-control-sm" id="mobile" name="mobile">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="bloodgroup" class="col-sm-2 col-form-label">Blood Group</label>
                     <div class="col-sm-2">
-                        <input type="text" class="form-control form-control-sm" id="bloodgroup">
+                        <input type="text" class="form-control form-control-sm" id="bloodgroup" name="bloodgroup">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="email" class="col-sm-2 col-form-label">Email</label>
                     <div class="col-sm-2">
-                        <input type="email" class="form-control form-control-sm" id="email">
+                        <input type="email" class="form-control form-control-sm" id="email" class="email">
                     </div>
                 </div>
                 <div class="form-group row">
