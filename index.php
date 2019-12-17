@@ -1,6 +1,10 @@
+<<<<<<< HEAD
+<?php include_once(__DIR__.'//./inc/header.php') ?>
+=======
 <?php
     include  __DIR__."\inc\header.php";
 ?>
+>>>>>>> master
     <div id="login">
         <h3 class="text-center text-white pt-5">Welcome</h3>
         <div class="container">

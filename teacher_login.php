@@ -1,7 +1,11 @@
 <?php
-    include "inc/header.php";
-    include "database/config.php";
-    include "database/database.php";
+  include_once(__DIR__.'//./database/Teacher.php');
+  include_once(__DIR__.'//./inc/header.php');
+
+  if(isset($_POST['tLogin'])){
+    $tc=new Teacher();
+    $tc->checkStLogin($_POST);
+  }
 ?>
     <div id="login">
         <h3 class="text-center text-white pt-5">Login form</h3>
@@ -21,7 +25,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="remember-me" class="text-info"><span>Remember me</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br>
-                                <input type="submit" name="submit" class="btn btn-info btn-md" value="submit">
+                                <input type="submit" name="tLogin" class="btn btn-info btn-md" value="submit">
                             </div>
                             <div id="register-link" class="text-right">
                                 <a href="#" class="text-info">Register here</a>

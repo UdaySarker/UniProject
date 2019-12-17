@@ -1,52 +1,109 @@
-<?php
-    include "config.php";
-    include "database.php"
-?>
-<?php
-    $db = new Database();
-    $query = "select student.id,student.name,department.dept_name from student inner join department on student.department_id=department.dept_id";
-    $read = $db ->select($query);
 
-    if(isset($_GET['id']))
-    {
-        $id = $_GET['id'];
-        $query = "delete from student where id=$id";
-        $del = $db->delete($query);
-    }
-?>
-<?php include "inc/header.php"?>
-        <div class="row headding-section">
-            <div class="col-10"><h2>Instructor List</h2></div>
-            <div class="col-2"><a href="index.php" class="btn btn-primary text-right">Back</a></div>
-        </div>
-        <div class="row">
-            <div class="col">
-                 <table class="table">
-                    <thead>
-                      <tr>
-                        <th>Name</th>
-                        <th>Instructor ID</th>
-                        <th>Department</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                     <?php if($read) {?>
-                     <?php while($row = $read->fetch_assoc()) {?>
-                      <tr>
-                        <td><?php echo $row['name'];?></td>
-                        <td><?php echo $row['id']?></td>
-                        <td><?php echo $row['dept_name'];?></td>
-                        <td>
-                            <a href="update.php?id=<?php echo urlencode($row['id']);?>" class="btn btn-info">Update</a>
-                            <a  onclick="return confirm('are you sure to delete')" href="?id=<?php echo urlencode($row['id']);?>" class="btn btn-danger">Delete</a>
-                        </td>
-                      </tr>
-                      <?php }?>
-                      <?php } else {?>
-                      <p>data not found</p>
-                      <?php }?>
-                    </tbody>
-                </table>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+
+    <title>Album example for Bootstrap</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/album/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="album.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <header>
+      <div class="collapse bg-dark" id="navbarHeader">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-8 col-md-7 py-4">
+              <h4 class="text-white">About</h4>
+              <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
             </div>
-        </div
-<?php include "inc/footer.php"?>
+            <div class="col-sm-4 offset-md-1 py-4">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="navbar navbar-dark bg-dark box-shadow">
+        <div class="container d-flex justify-content-between">
+          <a href="#" class="navbar-brand d-flex align-items-center">
+            <strong>Teacher Portal</strong>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main role="main">
+      <div class="album py-5 bg-light">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <div class="card-body">
+                  <h5 class="card-title">View Students</h5>
+                  <p class="card-text"></p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <a href="view_students.php" class="btn btn-sm btn-outline-primary">View</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <div class="card-body">
+                  <h5 class="card-title">Student Attendance</h5>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <a href="student_att.php" class="btn btn-sm btn-outline-secondary">Place Attendance</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
+                <div class="card-body">
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                    </div>
+                    <small class="text-muted">9 mins</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <footer class="text-muted">
+
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="../../assets/js/vendor/popper.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <script src="../../assets/js/vendor/holder.min.js"></script>
+  </body>
+</html>
