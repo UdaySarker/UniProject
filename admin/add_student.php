@@ -24,7 +24,7 @@
       <div class="navbar navbar-dark bg-dark box-shadow">
         <div class="container d-flex justify-content-between">
           <a href="#" class="navbar-brand d-flex align-items-center">
-            <strong>Teacher Portal</strong>
+            <strong>Admin Portal</strong>
           </a>
         </div>
       </div>
@@ -72,19 +72,8 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <div class="col-sm-2">Checkbox</div>
                     <div class="col-sm-10">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="gridCheck1">
-                        <label class="form-check-label" for="gridCheck1">
-                        Example checkbox
-                        </label>
-                    </div>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <div class="col-sm-10">
-                    <button type="submit" class="btn btn-primary">Sign in</button>
+                    <button type="submit" class="btn btn-primary" name="addStudent">Add Student</button>
                     </div>
                 </div>
                 </form>
