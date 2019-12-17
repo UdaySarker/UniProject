@@ -11,8 +11,8 @@
   if(isset($_POST['getStudentForAtt'])){
     $stAtts=$tch->getStudentForAtt($_POST);
   }
-  if(isset($_POST['submitAtt'])){
-    print_r($_POST);
+  if(isset($_POST['studentAtt'])){
+    print_r($_POST['studentAtt']);
   }
  ?>
 <!doctype html>
@@ -74,9 +74,9 @@
                     <?php if(isset($stAtts)):?>
                     <?php foreach($stAtts as $stAtt):?>
                     <tr>
-                      <td><input type="hidden" name="sid" onsubmit="this.value"><?php echo $stAtt['student_id']?></td>
-                      <td><input type="hidden" name="sname" value=""><?php echo $stAtt['name']?></td>
-                      <td><input type="checkbox" name="status"></td>
+                      <td><input type="hidden" name="studentAtt[sid]" value="<?php echo $stAtt['student_id']?>"><?php echo $stAtt['student_id']?></td>
+                      <td><input type="hidden" name="studentAtt[sname]" value="<?php echo $stAtt['name']?>"><?php echo $stAtt['name']?></td>
+                      <td><input type="checkbox" name="studentAtt[sta]"></td>
                     </tr>
                     <?php endforeach?>
                     <?php endif?>
