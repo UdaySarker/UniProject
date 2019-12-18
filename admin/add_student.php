@@ -7,7 +7,7 @@
         $ad=new Admin();
         $res=$ad->insertStudent($_POST);
     }
-  
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -34,7 +34,7 @@
         <div class="row justify-content-md-center">
             <div class="col-lg-8 col-offset-2">
             <?php if(isset($res)):?>
-            <h3 class="alert alert-danger w-50"><?=$res??''?></h3>
+            <h5 class="alert alert-danger w-50"><?=$res??''?></h5>
             <?php endif ?>
             <form method="POST" action="">
                 <div class="form-group row">
@@ -76,8 +76,8 @@
                 </div>
                 <div class="form-group row">
                     <label for="email" class="col-sm-2 col-form-label">Email</label>
-                    <div class="col-sm-2">
-                        <input type="email" class="form-control form-control-sm" id="email" class="email">
+                    <div class="col-sm-6">
+                        <input type="email" class="form-control form-control-sm" id="email" name="email">
                     </div>
                 </div>
                 <div class="form-group row">
