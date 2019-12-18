@@ -55,17 +55,27 @@
           $stmt=$this->db->conn()->query($sql);
           return $stmt;
         }
-        public function updateStudent($id){
+        public function updateStudent($data,$id){
           try{
-            $sql="UPDATE student SET name=:sname,semester=:sem,mobile=:mob,bloodgroup=:bg,email=:email WHERE student_id=:$id";
-            $stmt=$this->db->conn()->prepare();
+            $sql="UPDATE student SET name=:sname,semester=:sem,mobile=:mob,bloodgroup=:bg,email=:email WHERE student_id=:id";
+            $stmt=$this->db->conn()->prepare($sql);
+            $stmt->bindParam(':id',$id);
             $stmt->bindParam(':sname',$data['sname']);
-            $stmt->bindParam(':sem',$data['semester']);
+            $stmt->bindParam(':sem',$data['semid']);
             $stmt->bindParam(':mob',$data['mobile']);
             $stmt->bindParam(':bg',$data['bloodgroup']);
             $stmt->bindParam(':email',$data['email']);
             $exec=$stmt->execute();
-          }catch()
+            if($exec){
+              $this->msg="Student Data Updated Success";
+              header('Location: view_students.php');
+            }else{
+              $this->msg="Something Went Wrong";
+            }
+          }catch(PDOException $e){
+            echo $e->getMessage();
+          }
+          return $this->msg;
         }
     }
 ?>

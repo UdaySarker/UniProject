@@ -7,10 +7,13 @@
     if(isset($_GET['id'])){
       $id=filter_var($_GET['id'],FILTER_SANITIZE_STRING);
       $sts=$ad->getStudentById($_GET['id']);
+    }else{
+      header('Location:index.php');
     }
     if(isset($_POST['updateStudent'])){
         $ad=new Admin();
-        print_r($_POST);
+        $id=$_POST['sid'];
+        $res=$ad->updateStudent($_POST,$id);
     }
 
 ?>
@@ -21,26 +24,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
 
-    <title>Add Student</title>
+    <title>Update Student</title>
     <!-- Bootstrap core CSS -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
   </head>
   <body>
-    <header>
-      <div class="navbar navbar-dark bg-dark box-shadow">
-        <div class="container d-flex justify-content-between">
-          <a href="#" class="navbar-brand d-flex align-items-center">
-            <strong>Admin Portal</strong>
-          </a>
-        </div>
-      </div>
-    </header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Admin Portal</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="add_student.php">Add Student</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="view_students.php">View Student</a>
+      </li>
+    </ul>
+  </div>
+</nav>
     <div class="container" style="margin-top:20px">
         <div class="row justify-content-md-center">
             <div class="col-lg-8 col-offset-2">
               <h2>Update Student Data</h2>
             <?php if(isset($res)):?>
-            <h5 class="alert alert-danger w-50"><?=$res??''?></h5>
+            <h5 class="alert alert-danger w-50"><?=$res ?? ''?></h5>
             <?php endif ?>
             <form method="POST" action="">
               <?php foreach($sts as $st): ?>
@@ -90,7 +100,7 @@
                 <?php endforeach ?>
                 <div class="form-group row">
                     <div class="col-sm-10">
-                    <button type="submit" class="btn btn-primary" name="updateStudent">Add Student</button>
+                    <button type="submit" class="btn btn-primary" name="updateStudent">Update Student</button>
                     </div>
                 </div>
                 </form>

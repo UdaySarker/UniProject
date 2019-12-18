@@ -2,8 +2,8 @@
   require_once(__DIR__."\..\database\Teacher.php");
   $tch=new Teacher();
   $semesters=$tch->getSemester();
-  if(isset($_POST['submit'])){
-     $sts=$tch->getStudent($_POST);
+  if(isset($_POST['getStudent'])){
+     $sts=$tch->getStudent($_POST['getStudent']);
   }
  ?>
 <!doctype html>
@@ -27,79 +27,75 @@
   </head>
 
   <body>
-    <div class="container-fluid">
-      <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
-        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Admin Portal</a>>
-        </nav>
-
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-          <h2>View Students</h2>
-          <form class="" action="" method="post">
-            <select class="" name="getStudent" class="form-control col-lg-4" style="margin-bottom:5px">
-              <option value="">Please Select Semester</option>
-              <?php foreach($semesters as $semester):?>
-              <option value="<?php echo $semester['semester_id']?>"><?php echo $semester['semester_name']?></option>
-              <?php endforeach?>
-            </select>
-            <input type="submit" name="submit" value="Go">
-          </form>
-          <label for="">Search By</label>
-          <input type="text" name="" value="" onkeyup="searchBox(this.value)"id="searchBox" placeholder="search" class="form-control col-lg-4">
-          <div class="table-responsive">
-            <table class="table table-striped table-sm">
-              <thead>
-                <tr>
-                  <th>Student ID</th>
-                  <th>Name</th>
-                  <th>Semester</th>
-                  <th>Mobile Number</th>
-                  <th>Email</th>
-                  <th>BloodGroup</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <?php if(isset($sts)): ?>
-                <?php foreach($sts as $st): ?>
-                <tr>
-                  <td><?php echo $st['student_id'] ?></td>
-                  <td><?php echo $st['name'] ?></td>
-                  <td><?php echo $st['semester_name'] ?></td>
-                  <td><?php echo $st['mobile'] ?></td>
-                  <td><?php echo $st['email'] ?></td>
-                  <td><?php echo $st['bloodgroup'] ?></td>
-                  <td>
-                    <a href="update.php?id=<?php echo $st['student_id'] ?>" class="btn btn-sm btn-info">Update</a>
-                    <a href="#" class="btn btn-sm btn-danger">Delete</a>
-                  </td>
-                </tr>
-              <?php endforeach ?>
-            <?php endif ?>
-              </tbody>
-            </table>
-          </div>
-        </main>
-      </div>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Admin Portal</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="add_student.php">Add Student</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="view_students.php">View Student</a>
+        </li>
+      </ul>
     </div>
+  </nav>
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-    <script src="../../assets/js/vendor/popper.min.js"></script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-
-    <!-- Icons -->
-    <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
-    <script>
-      feather.replace()
-    </script>
-
-    <!-- Graphs -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
-    <script>
-
-    </script>
+  <div class="container">
+  <h2 >View Students</h2>
+    <div class="row">
+    
+    <br/>
+    <form class="form-inline" method="POST" action="">
+    <div class="form-group">
+      <select class="form-control" name="getStudent" style="margin-bottom:5px">
+        <option value="">Please Select Semester</option>
+        <?php foreach($semesters as $semester):?>
+        <option value="<?php echo $semester['semester_id']?>"><?php echo $semester['semester_name']?></option>
+        <?php endforeach?>
+      </select>
+    </div>
+    <div class="form-group">
+      <button type="submit" name="" class="btn btn-primary mb-2" style="margin-left: 5px">View</button>
+    </div>
+  </form>
+<div class="table-responsive">
+  <table class="table table-striped table-sm">
+    <thead>
+      <tr>
+        <th>Student ID</th>
+        <th>Name</th>
+        <th>Semester</th>
+        <th>Mobile Number</th>
+        <th>Email</th>
+        <th>BloodGroup</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+<?php if(isset($sts)): ?>
+<?php foreach($sts as $st): ?>
+    <tr>
+      <td><?php echo $st['student_id'] ?></td>
+      <td><?php echo $st['name'] ?></td>
+      <td><?php echo $st['semester_name'] ?></td>
+      <td><?php echo $st['mobile'] ?></td>
+      <td><?php echo $st['email'] ?></td>
+      <td><?php echo $st['bloodgroup'] ?></td>
+      <td>
+        <a href="update_students.php?id=<?php echo $st['student_id'] ?>" class="btn btn-sm btn-info">Update</a>
+        <a href="#" class="btn btn-sm btn-danger">Delete</a>
+      </td>
+    </tr>
+<?php endforeach ?>
+<?php endif ?>
+    </tbody>
+  </table>
+</div>
+    </div>
+  </div>
   </body>
 </html>

@@ -9,7 +9,7 @@ class Teacher{
     header('Location:./teacher');
   }
   public function getStudent($data){
-    $sql="SELECT s.student_id,s.name,s.mobile,s.bloodgroup,s.email,st.semester_name FROM student s,semester st WHERE s.semester=st.semester_id AND st.semester_id=$data[getStudent]";
+    $sql="SELECT s.student_id,s.name,s.mobile,s.bloodgroup,s.email,st.semester_name FROM student s,semester st WHERE s.semester=st.semester_id AND st.semester_id=$data";
     $stmt=$this->db->conn()->query($sql);
     return $stmt;
   }
