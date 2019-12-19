@@ -32,7 +32,7 @@
     }
     public function getGpa($id){
       try{
-        $sql="SELECT * FROM student_result WHERE student_id=:id";
+        $sql="SELECT student_result.student_semester,semester.semester_name,student_result.student_gpa FROM student_result JOIN semester ON student_result.student_semester=semester.semester_id WHERE student_result.student_id=:id";
         $stmt=$this->db->conn()->prepare($sql);
         $stmt->bindParam(':id',$id);
         $stmt->execute();

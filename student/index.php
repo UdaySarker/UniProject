@@ -1,6 +1,15 @@
 <?php
 session_start();
-$user=$_SESSION['id'];
+if($_SESSION['id']==null){
+  header('Location:../student_login.php');
+}else{
+  $user=$_SESSION['id'];
+}
+if(isset($_GET['action']) && $_GET['action']=='logout'){
+  session_destroy();
+  session_unset();
+  header('Location: ../student_login.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +25,7 @@ $user=$_SESSION['id'];
 <?php include "../inc/header.php"?>
         <div class="row headding-section">
             <div class="col-10"><h2>Student Information</h2></div>
-            <div class="col-2"><a href="index.php" class="btn btn-primary text-right">Back</a></div>
+            <div class="col-2"><a href="index.php?action=logout" class="btn btn-primary text-right">Sign Out</a></div>
         </div>
         <div class="row mr-auto">
           <div class="col-md-4">

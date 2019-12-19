@@ -1,14 +1,20 @@
 <?php
   session_start();
+  if($_SESSION['id']==null){
+    header('Location:../student_login.php');
+  }else{
+    $user=$_SESSION['id'];
+  }
+  if(isset($_GET['action']) && $_GET['action']=='logout'){
+    session_destroy();
+    session_unset();
+    header('Location: ../student_login.php');
+  }
   require_once(__DIR__."\..\database\Student.php");
   require_once(__DIR__."\..\database\Teacher.php");
   $user=$_SESSION['id'];
   $sts=new Student();
-  $semesters=$sts->getAllByStudent($user);
-
-  print_r($semesters);
-  $gpa=$sts->getGpa($user);
-  print_r($gpa);
+  $gpas=$sts->getGpa($user);
  ?>
 <!doctype html>
 <html lang="en">
@@ -32,7 +38,7 @@
 
   <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Student Portal</a>
+    <a class="navbar-brand" href="index.php">Student Portal</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -66,8 +72,12 @@
       </tr>
     </thead>
     <tbody>
+    <?php foreach($gpas as $gpa):?>
     <tr>
+      <td><?php echo $gpa['semester_name']?></td>
+      <td><?php echo $gpa['student_gpa']?></td>
     </tr>
+    <?php endforeach;?>
     </tbody>
   </table>
 </div>
