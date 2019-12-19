@@ -14,7 +14,7 @@
                             <h2>Welcome</h2>
                             <a href="student_login.php" class="btn btn-outline-dark">Student Portal</a>||
                             <a href="teacher_login.php" class="btn btn-outline-dark">Teacher Portal</a>||
-                            <a href="admin/" class="btn btn-outline-dark">Admin Portal</a>
+                            <a href="admin_login.php" class="btn btn-outline-dark">Admin Portal</a>
                         </div>
                     </div>
                 </div>

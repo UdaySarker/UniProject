@@ -1,4 +1,15 @@
 <?php
+     session_start();
+     if($_SESSION['id']==null){
+         header('Location:../admin_login.php');
+       }else{
+         $user=$_SESSION['id'];
+       }
+       if(isset($_GET['action']) && $_GET['action']=='logout'){
+         session_destroy();
+         session_unset();
+         header('Location: ../admin_login.php');
+       } 
   require_once(__DIR__."\..\database\Teacher.php");
   $tch=new Teacher();
   $semesters=$tch->getSemester();
@@ -41,6 +52,9 @@
           <a class="nav-link" href="view_students.php">View Student</a>
         </li>
       </ul>
+    </div>
+    <div class="mr-sm-2">
+      <a href="?action=logout" class="nav-link btn btn-primary">Sign Out</a>
     </div>
   </nav>
 

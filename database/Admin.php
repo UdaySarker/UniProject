@@ -6,6 +6,32 @@
         public function __construct(){
             $this->db=new DB();
         }
+        public function checkAdLogin($data){
+          if(empty($data['adUsername']) || empty($data['adPassword'])){
+            $this->msg="Please Insert Admin ID and Password";
+          }elseif($data['type']!='2'){
+            $this->msg="Please use student portal instead";
+          }else{
+            try{
+              $sql="SELECT id,password,type FROM dbuser WHERE id=:sid AND password=:spass AND type=:stype LIMIT 1";
+              $stmt=$this->db->conn()->prepare($sql);
+              $stmt->bindParam(':sid',$data['adUsername']);
+              $stmt->bindParam(':spass',$data['adPassword']);
+              $stmt->bindParam(":stype",$data['type']);
+              $stmt->execute();
+              $exec=$stmt->fetch();
+              if($stmt->rowCount()>0){
+                $user=$exec['id'];
+                session_start();
+                $_SESSION['id']=$user;
+                header('Location:./Admin/');
+              }
+            }catch(PDOException $e){
+              echo $e->getMessage();
+            }
+          }
+          return $this->msg;
+        }
         private function checkData($data){
             $sid=filter_var($data['sid'],FILTER_VALIDATE_INT);
             $sname=filter_var($data['sname'],FILTER_SANITIZE_STRING);

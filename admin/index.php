@@ -1,4 +1,16 @@
-
+<?php
+  session_start();
+  if($_SESSION['id']==null){
+    header('Location:../admin_login.php');
+  }else{
+    $user=$_SESSION['id'];
+  }
+  if(isset($_GET['action']) && $_GET['action']=='logout'){
+    session_destroy();
+    session_unset();
+    header('Location: ../admin_login.php');
+  }
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -34,9 +46,10 @@
           <a href="#" class="navbar-brand d-flex align-items-center">
             <strong>Admin Portal</strong>
           </a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
-          </button>
         </div>
+        <div class="mr-sm-2">
+      <a href="?action=logout" class="nav-link btn btn-primary">Sign Out</a>
+    </div>
       </div>
     </header>
 
@@ -76,16 +89,6 @@
     </main>
 
     <footer class="text-muted">
-
     </footer>
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-    <script src="../../assets/js/vendor/popper.min.js"></script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-    <script src="../../assets/js/vendor/holder.min.js"></script>
   </body>
 </html>

@@ -1,4 +1,15 @@
 <?php
+    session_start();
+    if($_SESSION['id']==null){
+        header('Location:../admin_login.php');
+      }else{
+        $user=$_SESSION['id'];
+      }
+      if(isset($_GET['action']) && $_GET['action']=='logout'){
+        session_destroy();
+        session_unset();
+        header('Location: ../admin_login.php');
+      }
     require_once('../database/Teacher.php');
     require_once('../database/Admin.php');
     $tch=new Teacher();
@@ -22,7 +33,7 @@
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Admin Portal</a>
+        <a class="navbar-brand" href="index.php">Admin Portal</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -35,6 +46,9 @@
                 <a class="nav-link" href="view_students.php">View Student</a>
             </li>
             </ul>
+        </div>
+        <div class="mr-sm-2">
+            <a href="?action=logout" class="nav-link btn btn-primary">Sign Out</a>
         </div>
     </nav>
     <div class="container" style="margin-top:20px">

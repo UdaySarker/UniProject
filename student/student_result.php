@@ -53,7 +53,10 @@
         <li class="nav-item">
           <a class="nav-link" href="view_students.php">Payment Info</a>
         </li>
-      </ul>
+      </ul>    
+    </div>
+    <div class="mr-sm-2">
+      <a href="?action=logout" class="nav-link btn btn-primary">Sign Out</a>
     </div>
   </nav>
   <div class="container">

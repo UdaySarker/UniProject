@@ -9,6 +9,8 @@
     public function checkStLogin($data){
       if(empty($data['stUsername']) || empty($data['stPassword'])){
         $this->msg="Please Insert Student ID and Password";
+      }elseif($data['type']!='1'){
+        $this->msg="Please use student portal instead";
       }else{
         try{
           $sql="SELECT id,password,type FROM dbuser WHERE id=:sid AND password=:spass AND type=:stype LIMIT 1";

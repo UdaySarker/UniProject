@@ -1,4 +1,15 @@
 <?php
+    session_start();
+    if($_SESSION['id']==null){
+        header('Location:../admin_login.php');
+      }else{
+        $user=$_SESSION['id'];
+      }
+      if(isset($_GET['action']) && $_GET['action']=='logout'){
+        session_destroy();
+        session_unset();
+        header('Location: ../admin_login.php');
+      }
     require_once('../database/Teacher.php');
     require_once('../database/Admin.php');
     $tch=new Teacher();
@@ -44,6 +55,9 @@
       </li>
     </ul>
   </div>
+  <div class="mr-sm-2">
+      <a href="?action=logout" class="nav-link btn btn-primary">Sign Out</a>
+    </div>
 </nav>
     <div class="container" style="margin-top:20px">
         <div class="row justify-content-md-center">
