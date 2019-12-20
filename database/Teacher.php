@@ -2,11 +2,35 @@
 require_once('DB.php');
 class Teacher{
   private $db;
+  private $msg;
   public function __construct(){
     $this->db=new DB();
   }
-  public function checkStLogin($data){
-    header('Location:./teacher');
+  public function checkTLogin($data){
+    if(empty($data['tUsername']) || empty($data['tPassword'])){
+      $this->msg="Please Insert Teacher ID and Password";
+    }elseif($data['type']!='3'){
+      $this->msg="Please use student portal instead";
+    }else{
+      try{
+        $sql="SELECT id,password,type FROM dbuser WHERE id=:tid AND password=:tpass AND type=:ttype LIMIT 1";
+        $stmt=$this->db->conn()->prepare($sql);
+        $stmt->bindParam(':tid',$data['tUsername']);
+        $stmt->bindParam(':tpass',$data['tPassword']);
+        $stmt->bindParam(":ttype",$data['type']);
+        $stmt->execute();
+        $exec=$stmt->fetch();
+        if($stmt->rowCount()>0){
+          $user=$exec['id'];
+          session_start();
+          $_SESSION['id']=$user;
+          header('Location:./teacher/');
+        }
+      }catch(PDOException $e){
+        echo $e->getMessage();
+      }
+    }
+    return $this->msg;
   }
   public function getStudent($data){
     $sql="SELECT s.student_id,s.name,s.mobile,s.bloodgroup,s.email,st.semester_name FROM student s,semester st WHERE s.semester=st.semester_id AND st.semester_id=$data";

@@ -22,7 +22,7 @@ if(isset($_GET['action']) && $_GET['action']=='logout'){
 </head>
 <body>
     <div class="container">
-<?php include "../inc/header.php"?>
+    <?php include "../inc/header.php"?>
         <div class="row headding-section">
             <div class="col-10"><h2>Student Information</h2></div>
             <div class="col-2"><a href="index.php?action=logout" class="btn btn-primary text-right">Sign Out</a></div>

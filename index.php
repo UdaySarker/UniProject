@@ -12,9 +12,9 @@
                     <div id="login-box" class="col-md-12">
                         <div>
                             <h2>Welcome</h2>
-                            <a href="student_login.php" class="btn btn-outline-dark">Student Portal</a>||
-                            <a href="teacher_login.php" class="btn btn-outline-dark">Teacher Portal</a>||
-                            <a href="admin_login.php" class="btn btn-outline-dark">Admin Portal</a>
+                            <a href="student_login.php" class="btn btn-outline-dark">Student Portal</a>&nbsp;||&nbsp;
+                            <a href="teacher_login.php" class="btn btn-outline-dark">Teacher Portal&nbsp;</a>&nbsp;||&nbsp;
+                            <a href="admin_login.php" class="btn btn-outline-dark">Admin Portal&nbsp;</a>
                         </div>
                     </div>
                 </div>
