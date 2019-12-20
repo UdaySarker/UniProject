@@ -88,12 +88,12 @@
                 <?php if(isset($sts)): ?>
                 <?php foreach($sts as $st): ?>
                 <tr>
-                  <td><?php echo $st['student_id'] ?></td>
-                  <td><?php echo $st['name'] ?></td>
-                  <td><?php echo $st['semester_name'] ?></td>
-                  <td><?php echo $st['mobile'] ?></td>
-                  <td><?php echo $st['email'] ?></td>
-                  <td><?php echo $st['bloodgroup'] ?></td>
+                  <td><?php echo $st['student_id'] ?? "" ?></td>
+                  <td><?php echo $st['name'] ?? ""?></td>
+                  <td><?php echo $st['semester_name'] ?? "" ?></td>
+                  <td><?php echo $st['mobile'] ?? "" ?></td>
+                  <td><?php echo $st['email'] ?? ""?></td>
+                  <td><?php echo $st['bloodgroup'] ?? ""?></td>
                 </tr>
               <?php endforeach ?>
             <?php endif ?>
@@ -102,5 +102,6 @@
           </div>
       </div>
     </div>
+    <script src="../js/script.js"></script>
   </body>
 </html>
