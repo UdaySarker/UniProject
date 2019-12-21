@@ -35,7 +35,7 @@
         private function checkData($data){
             $sid=filter_var($data['sid'],FILTER_VALIDATE_INT);
             $sname=filter_var($data['sname'],FILTER_SANITIZE_STRING);
-            $semester=$data['semid'];
+            $semester=filter_var($data['semester'],FILTER_SANITIZE_STRING);
             $mobile=filter_var($data['mobile'],FILTER_SANITIZE_STRING);
             $bloodgroup=filter_var($data['bloodgroup'],FILTER_SANITIZE_STRING);
             $email=filter_var($data['email'],FILTER_SANITIZE_EMAIL);
@@ -48,7 +48,8 @@
                       'semester'=>$semester,
                       'mobile'=>$mobile,
                       'bloodgroup'=>$bloodgroup,
-                      'email'=>$email];
+                      'email'=>$email,
+                    ];
               return $data;
             }
         }
@@ -81,27 +82,42 @@
           $stmt=$this->db->conn()->query($sql);
           return $stmt;
         }
-        public function updateStudent($data,$id){
+        public function updateStudent($pdata,$id){
+          $data=$this->checkData($pdata);
+         if($data){
+            try{
+              $sql="UPDATE student SET name=:sname,semester=:sem,mobile=:mob,bloodgroup=:bg,email=:email WHERE student_id=$id";
+              $stmt=$this->db->conn()->prepare($sql);
+              $stmt->bindParam(':sname',$data['sname']);
+              $stmt->bindParam(':sem',$data['semester']);
+              $stmt->bindParam(':mob',$data['mobile']);
+              $stmt->bindParam(':bg',$data['bloodgroup']);
+              $stmt->bindParam(':email',$data['email']);
+              $exec=$stmt->execute();
+              if($exec){
+                $this->msg="Student Data Updated Success";
+                header('Location: view_students.php');
+              }else{
+                $this->msg="Something Went Wrong";
+              }
+            }catch(PDOException $e){
+              echo $e->getMessage();
+            }
+         }
+          return $this->msg;
+        }
+        public function deleteStudent($id){
           try{
-            $sql="UPDATE student SET name=:sname,semester=:sem,mobile=:mob,bloodgroup=:bg,email=:email WHERE student_id=:id";
+            $sql="DELETE FROM student WHERE student_id=:id";
             $stmt=$this->db->conn()->prepare($sql);
             $stmt->bindParam(':id',$id);
-            $stmt->bindParam(':sname',$data['sname']);
-            $stmt->bindParam(':sem',$data['semid']);
-            $stmt->bindParam(':mob',$data['mobile']);
-            $stmt->bindParam(':bg',$data['bloodgroup']);
-            $stmt->bindParam(':email',$data['email']);
-            $exec=$stmt->execute();
-            if($exec){
-              $this->msg="Student Data Updated Success";
-              header('Location: view_students.php');
-            }else{
-              $this->msg="Something Went Wrong";
+            $res=$stmt->execute();
+            if($res){
+              header("Location: view_students.php");
             }
           }catch(PDOException $e){
             echo $e->getMessage();
           }
-          return $this->msg;
         }
     }
 ?>

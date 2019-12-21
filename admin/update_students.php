@@ -71,19 +71,19 @@
                 <div class="form-group row">
                     <label for="sid" class="col-sm-2 col-form-label">Student ID</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control form-control-sm" id="sid" name="sid" value="<?php echo $st['student_id'] ?>">
+                        <input type="text" class="form-control form-control-sm" name="sid" value="<?php echo $st['student_id'] ?>">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="studentname" class="col-sm-2 col-form-label">Name</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control form-control-sm" id="studentname" name="sname" value="<?php echo $st['name'] ?>">
+                        <input type="text" class="form-control form-control-sm" name="sname" value="<?php echo $st['name'] ?>">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="semester" class="col-sm-2 col-form-label">Semester</label>
                     <div class="col-sm-4">
-                        <select class="form-control form-control-sm" name="semid">
+                        <select class="form-control form-control-sm" name="semester">
                             <option value="">Select Semester</option>
                         <?php if(isset($sems)):?>
                             <?php foreach($sems as $sem):?>
@@ -96,19 +96,19 @@
                 <div class="form-group row">
                     <label for="mobile" class="col-sm-2 col-form-label">Mobile</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control form-control-sm" id="mobile" name="mobile" value="<?php echo $st['mobile'] ?>">
+                        <input type="text" class="form-control form-control-sm" name="mobile" value="<?php echo $st['mobile'] ?>">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="bloodgroup" class="col-sm-2 col-form-label">Blood Group</label>
                     <div class="col-sm-2">
-                        <input type="text" class="form-control form-control-sm" id="bloodgroup" name="bloodgroup" value="<?php echo $st['bloodgroup'] ?>">
+                        <input type="text" class="form-control form-control-sm"  name="bloodgroup" value="<?php echo $st['bloodgroup'] ?>">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="email" class="col-sm-2 col-form-label">Email</label>
                     <div class="col-sm-6">
-                        <input type="email" class="form-control form-control-sm" id="email" name="email" value="<?php echo $st['email'] ?>">
+                        <input type="email" class="form-control form-control-sm" name="email" value="<?php echo $st['email'] ?>">
                     </div>
                 </div>
                 <?php endforeach ?>

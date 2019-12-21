@@ -50,15 +50,15 @@
           <h2>Student Attendance</h2>
           <form class="" action="" method="post" class="form-group" id="myForm">
             <div class="col-md-4">
-            <select name="course" id="course">
-                  <option value="">Please select course</option>
-                  <?php foreach($courses as $course):?>
-                    <option value="<?php echo $course['course_id']?>"><?php echo $course['course_name']?></option>
-                    <?php endforeach?>
-            </select>
+              <select name="course" id="course">
+                    <option value="">Please select course</option>
+                    <?php foreach($courses as $course):?>
+                      <option value="<?php echo $course['course_id']?>"><?php echo $course['course_name']?></option>
+                      <?php endforeach?>
+              </select>
             </div>
-            <button id="btn" type="submit" name="getStudentForAtt"class="btn btn-sm btn-outline-info" style="margin-left: 10px">Get Info</button>
-            <button onclick="window.clear()" class="btn btn-sm btn-outline-info">Clear All</button>
+              <button id="btn" type="submit" name="getStudentForAtt"class="btn btn-sm btn-outline-info" style="margin-left: 10px">Get Info</button>
+              <button onclick="window.clear()" class="btn btn-sm btn-outline-info">Clear All</button>
             </form>
           <form method="post" action="">
           <div class="table-responsive">

@@ -66,7 +66,7 @@
     <form class="form-inline" method="POST" action="">
     <div class="form-group">
       <select class="form-control" name="getStudent" style="margin-bottom:5px">
-        <option value="">Please Select Semester</option>
+        <option value="0">Please Select Semester</option>
         <?php foreach($semesters as $semester):?>
         <option value="<?php echo $semester['semester_id']?>"><?php echo $semester['semester_name']?></option>
         <?php endforeach?>
@@ -101,7 +101,7 @@
       <td><?php echo $st['bloodgroup'] ?></td>
       <td>
         <a href="update_students.php?id=<?php echo $st['student_id'] ?>" class="btn btn-sm btn-info">Update</a>
-        <a href="#" class="btn btn-sm btn-danger">Delete</a>
+        <a href="delete.php?action=delete&id=<?php echo $st['student_id']?>" class="btn btn-sm btn-danger">Delete</a>
       </td>
     </tr>
 <?php endforeach ?>
