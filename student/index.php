@@ -39,6 +39,7 @@ if(isset($_GET['action']) && $_GET['action']=='logout'){
             <div class="card">
               <div class="card-body">
                 <a href="student_courseInfo" class="btn btn-primary">Course Information</a>
+                <p>Coming Soon....</p>
               </div>
             </div>
           </div>
@@ -46,6 +47,7 @@ if(isset($_GET['action']) && $_GET['action']=='logout'){
             <div class="card">
               <div class="card-body">
                 <a href="studentPayment" class="btn btn-primary">Payment Information</a>
+                <p>Coming Soon....</p>
               </div>
             </div>
           </div>

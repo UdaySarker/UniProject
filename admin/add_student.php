@@ -61,7 +61,7 @@
                 <div class="form-group row">
                     <label for="sid" class="col-sm-2 col-form-label">Student ID</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control form-control-sm" id="sid" name="sid">
+                        <input type="text" class="form-control form-control-sm" id="sid" onkeypress="checkInputId(this.value)" name="sid">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -110,5 +110,16 @@
             </div>
         </div>
     </div>
+    <script>
+        function checkInputId(id){
+            Number(id);
+            if(typeof(id)=='string'){
+                alert("id must be numeric");
+                if(id>3){
+                    alert("id must be 3 character");
+                }
+            }
+        }
+    </script>
   </body>
 </html>
